@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Oficial Reebok</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        header h1::before {
+            content: "▲ ";
+            color: #ff6b35;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .products-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #ff6b35;
+            color: #1a1a1a;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        section img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover img {
+            transform: scale(1.05);
+        }
+
+        section > div {
+            padding: 25px;
+        }
+
+        section p {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        section p:first-of-type {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: #1a1a1a;
+            text-transform: uppercase;
+        }
+
+        section p:nth-of-type(2) {
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 1.5em;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .client-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .client-section h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            border-left: 5px solid #ff6b35;
+            padding-left: 15px;
+        }
+
+        .client-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .client-section label {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 1.1em;
+        }
+
+        .client-section input[type="text"] {
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .client-section input[type="text"]:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .client-section input[type="button"] {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin-top: 10px;
+        }
+
+        .client-section input[type="button"]:hover {
+            background: linear-gradient(135deg, #ff4500 0%, #cc3700 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        #clienteInfo {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 1.1em;
+            border-left: 4px solid #ff6b35;
+            color: #333;
+        }
+
+        #clienteInfo:empty::before {
+            content: "Aún no hay información del cliente";
+            color: #999;
+            font-style: italic;
+        }
+
+        .cart-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .cart-section h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            border-left: 5px solid #ff6b35;
+            padding-left: 15px;
+        }
+
+        #listacarrito {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            min-height: 100px;
+            border: 2px dashed #ddd;
+        }
+
+        #listacarrito:empty::before {
+            content: "Tu carrito está vacío";
+            color: #999;
+            font-style: italic;
+            display: block;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cart-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #total {
+            font-size: 2em;
+            font-weight: 900;
+            color: #ff6b35;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .info-label {
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #1a1a1a;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 25px auto 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .checkout-button:hover {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+       
+        footer {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo::before {
+            content: "▲ ";
+            color: #ff6b35;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-section,
+            .client-section {
+                padding: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            footer {
+                padding: 40px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reebok</h1>
+        <p>Tienda Oficial</p>
+    </header>
+
+    <main>
+        <div class="products-section">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <div class="products-grid">
+                <section>
+                    <img src="zapareebok(1).jpg" alt="Zapatilla Reebok 1">
+                    <div>
+                        <p>Zapatilla Reebok 1</p>
+                        <p>$199.999</p>
+                        <input class="button" onclick="agregar('Zapatilla Reebok 1', 199999)" type="button" value="Agregar al Carro">
+                    </div>
+                </section>
+
+                <section>
+                    <img src="zapareebok(2).jpg" alt="Zapatilla Reebok 2">
+                    <div>
+                        <p>Zapatilla Reebok 2</p>
+                        <p>$149.999</p>
+                        <input class="button" onclick="agregar('Zapatilla Reebok 2', 149999)" type="button" value="Agregar al Carro">
+                    </div>
+                </section>
+
+                <section>
+                    <img src="zapareebok(3).jpg" alt="Zapatilla Reebok 3">
+                    <div>
+                        <p>Zapatilla Reebok 3</p>
+                        <p>$179.999</p>
+                        <input class="button" onclick="agregar('Zapatilla Reebok 3', 179999)" type="button" value="Agregar al Carro">
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="client-section">
+            <h2>👤 Agregar Cliente</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombreCliente">Nombre del cliente</label>
+                    <input type="text" id="nombreCliente" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="direccionCliente">Dirección del cliente</label>
+                    <input type="text" id="direccionCliente" placeholder="Ingresa tu dirección">
+                </div>
+                <input type="button" onclick="cliente()" value="Guardar Cliente">
+            </form>
+            <p class="info-label">Información del Cliente:</p>
+            <p id="clienteInfo"></p>
+        </div>
+
+        <div class="cart-section">
+            <h2>🛒 Información de la Compra</h2>
+            <div id="listacarrito"></div>
+            <p class="info-label" style="text-align: center;">Total del Pedido:</p>
+            <p id="total">$0</p>
+            <input class="checkout-button" type="button" onclick="total()" value="Finalizar Compra">
+        </div>
+    </main>
+
+    <div id="compra"></div>
+    
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">REEBOK</div>
+            <p>&copy; 2025 Reebok. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        class Zapatilla {
+            constructor(producto, precio) {
+                this.producto = producto;
+                this.precio = precio;
+            }
+        
+            mostrarZapa(){
+                return "Producto:" + this.producto + "Precio: $" + this.precio;
+            }
+
+            agregarAlCarrito(){
+                carrito.push(this);
+            }
+
+            mostrarCarrito(){
+                document.getElementById("listacarrito").innerHTML = "";
+                for (let i = 0; i < carrito.length; i++) {
+                    var item = carrito[i];
+                    document.getElementById("listacarrito").innerHTML +=
+                        `<div class="cart-item">
+                            <strong>Producto:</strong> ${item.producto} — <strong>Precio:</strong> $${item.precio.toLocaleString('es-AR')}
+                        </div>`;
+                }
+            }
+
+            calcularTotal(){
+                return carrito.reduce((suma, producto) => suma + producto.precio, 0);
+            }
+        }
+
+        class Cliente{
+            constructor(nombre, direccion){
+                this.nombre = nombre;
+                this.direccion = direccion;
+            }
+            mostrarCliente(){
+                return "Nombre: " + this.nombre + " | Dirección: " + this.direccion;
+            }
+        }
+
+        var carrito = [];
+
+        function agregar(producto, precio) {
+            var nuevaZapa = new Zapatilla(producto, precio);
+            carrito.push(nuevaZapa);
+            nuevaZapa.mostrarCarrito();
+            
+         
+            var totalpedido = nuevaZapa.calcularTotal();
+            document.getElementById("total").innerText = "$" + totalpedido.toLocaleString('es-AR');
+        }
+
+        function total() {
+            var nuevaZapa = new Zapatilla();
+            var totalpedido = nuevaZapa.calcularTotal();
+            document.getElementById("total").innerText = "$" + totalpedido.toLocaleString('es-AR');
+            document.getElementById("compra").innerHTML = "La Compra  se realizo con éxito" +
+            "<br>Factura: cliente - " + document.getElementById("clienteInfo").innerText +
+            "<br>Productos: " + carrito.map(item => item.producto).join(", ") +
+            "<br>Total: $" + totalpedido.toLocaleString('es-AR');
+        }
+
+        function cliente(){
+            var nombre = document.getElementById("nombreCliente").value;
+            var direccion = document.getElementById("direccionCliente").value;
+            
+            if(nombre && direccion) {
+                var nuevoCliente = new Cliente(nombre, direccion);
+                document.getElementById("clienteInfo").innerText = nuevoCliente.mostrarCliente();
+            } else {
+                alert("Por favor completa todos los campos del cliente");
+            }
+        }
+    </script>
+</body>
+</html>
